@@ -1,0 +1,25 @@
+<odoo>
+  <data>
+    <record id="task_type_edit" model="ir.ui.view">
+      <field name="name">task.type.edit.inherit</field>
+      <field name="model">project.task.type</field>
+      <field name="inherit_id" ref="project.task_type_edit"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='sequence']" position="after">
+          <field name="default_deadline"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="quick_create_task_form" model="ir.ui.view">
+      <field name="name">quick_create_task_form.inherit</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.quick_create_task_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="partner_id" invisible="1"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
