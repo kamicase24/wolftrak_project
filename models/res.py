@@ -8,4 +8,4 @@ log = logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    wt_bankcode = fields.Char(string='Bank code')
+    wt_bancode = fields.Char(string='Código BAN')
