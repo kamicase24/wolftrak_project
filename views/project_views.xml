@@ -16,8 +16,9 @@
       <field name="model">project.task</field>
       <field name="inherit_id" ref="project.quick_create_task_form"/>
       <field name="arch" type="xml">
+
         <xpath expr="//field[@name='user_id']" position="after">
-          <field name="partner_id"/>
+          <field name="partner_id" domain="[('company_type', '=', 'company')]"/>
         </xpath>
       </field>
     </record>
