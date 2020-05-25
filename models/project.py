@@ -19,6 +19,11 @@ class ProjectTask(models.Model):
     def default_get(self, fields_list):
         result = super(ProjectTask, self).default_get(fields_list)
 
+        if result.get('user_id'):
+            user_id = self.env['res.users'].search([('login', '=', 'dpstac@wolftrakglobal.com')], limit=1)
+            if user_id:
+                result.update({'user_id': user_id.id})
+
         if result.get('partner_id'):
             partner_id = self.env['res.partner'].browse(result['partner_id'])
             if partner_id.wt_bancode:
@@ -42,3 +47,12 @@ class ProjectTask(models.Model):
                 result.update({'date_deadline': deadline})
         return result
 
+    @api.onchange('partner_id')
+    def onchange_partner(self):
+        if self.partner_id:
+            if self.partner_id.wt_bancode:
+                self.name = self.partner_id.wt_bancode
+            else:
+                self.name = ''
+        else:
+            self.name = ''

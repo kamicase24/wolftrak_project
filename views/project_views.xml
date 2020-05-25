@@ -17,7 +17,7 @@
       <field name="inherit_id" ref="project.quick_create_task_form"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='user_id']" position="after">
-          <field name="partner_id" invisible="1"/>
+          <field name="partner_id"/>
         </xpath>
       </field>
     </record>
